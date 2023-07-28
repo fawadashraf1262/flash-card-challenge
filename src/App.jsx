@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 export default function App() {
   return (
     <div className="App">
@@ -41,5 +43,16 @@ const questions = [
 ];
 
 function FlashCards() {
-  return <div>TODO</div>;
+  const [selectedId, setSelectedId] = useState(2002)
+  return (
+    <div className="flashcards">
+      {questions.map((item) => (
+        <div key={item.id} style={ item.id === selectedId ? {backgroundColor: "red"} : {backgroundColor: "#f7f7f7"}}>
+          <p>{item.id === selectedId ? item.answer : item.question}</p>
+
+        </div>
+      )
+      )}
+    </div>
+  )
 }
